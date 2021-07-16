@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <% if(locals.body) { %><pre><%=JSON.stringify(body, null, 2)%></pre><% } %>
+
+    <form method="POST">
+      Nome: <input type="text" name="nome" required> <br />
+      Idade: <input type="number" name="idade"><br />
+      Telefone: <input type="text" name="telefone"><br />
+      <input type="submit" value="Enviar">
+    </form>
+  </body>
+</html>
