@@ -5,10 +5,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+
 const indexRouterValidator = require('./routes/index-validator');
 const terminalValidator = require('./validators/terminalValidator');
-
-const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -22,17 +22,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/**
- * Middlewares de validações de rotas
- */
 
+// Middlewares de validações de rotas
 app.use('/', indexRouterValidator);
 app.use(terminalValidator);
 
 
-/**
- * Rotas já validadas, só chegará aqui se tiver tudo okay
- */
+// Rotas já validadas, só chegará aqui se tiver tudo okay
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
